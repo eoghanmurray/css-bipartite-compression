@@ -1,6 +1,7 @@
 import sys
 import tinycss
 import random
+import zlib
 
 class Node(set):
   def __init__(self, data):
@@ -75,7 +76,7 @@ class Covering(set):
 
   @property
   def cost(self):
-    return len(str(self))
+    return len(zlib.compress(str(self), 6))
 
   def __hash__(self):
     return hash(frozenset(self))
